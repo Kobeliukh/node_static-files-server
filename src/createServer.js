@@ -42,7 +42,7 @@ function createServer() {
     if (requestUrl === '/file/') {
       response.statusCode = 200;
 
-      const filePath = path.join(__dirname, 'public', 'index.html');
+      const filePath = path.join(__dirname, '../public', 'index.html');
       const fileData = fs.readFileSync(filePath, 'utf-8');
 
       const headerKey = extMap[path.extname(filePath)] || 'text/plain';
@@ -55,7 +55,7 @@ function createServer() {
     }
 
     if (!requestUrl.startsWith('/file/')) {
-      response.statusCode = 400;
+      response.statusCode = 200;
       response.setHeader('content-type', 'text/plain');
 
       response.end('File path should start with "/file/"');
